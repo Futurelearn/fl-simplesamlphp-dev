@@ -3,6 +3,11 @@
 This is a basic docker image that configures SimpleSAMLPHP to run as a
 SAML IdP to use for local testing of SSO features.
 
+## Dependencies
+
+You'll need [Docker for Mac](https://docs.docker.com/docker-for-mac/) if
+you're using a Mac. If you're not, you, like... won't.
+
 ## Usage
 
 To fetch the base image:
@@ -15,7 +20,14 @@ To build the image:
 
 To run the image:
 
-    docker run -P -d --rm --name="ssp-local-test" futurelearn/simplesamlphp-idp:0.0.1
+    docker run -p 0.0.0.0:9001:80 -d --rm --name="ssp-local-test" futurelearn/simplesamlphp-idp:0.0.1
+
+You can then view the web interface in your browser at
+<http://localhost:9001/simplesaml>.
+
+To stop the image
+
+    docker kill ssp-local-test
 
 To log on to the image for debugging:
 
