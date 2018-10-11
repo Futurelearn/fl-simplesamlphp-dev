@@ -23,7 +23,8 @@ To run the image:
     docker run -p 0.0.0.0:9001:80 -d --rm --name="ssp-local-test" futurelearn/simplesamlphp-idp:0.0.1
 
 You can then view the web interface in your browser at
-<http://localhost:9001/simplesaml>.
+<http://localhost:9001/simplesaml>. The admin login is `admin /
+password`. Shhhhhhh.
 
 To stop the image
 
