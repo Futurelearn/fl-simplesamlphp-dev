@@ -6,6 +6,8 @@ $config = array (
     'secretsalt'             => 'amYIByt5cazIQNf7KxKaKA',
     'technicalcontact_name'  => 'John Smith',
     'technicalcontact_email' => 'john.smith@example.com',
+
+    'enable.saml20-idp' => true,
 );
 
 ?>
