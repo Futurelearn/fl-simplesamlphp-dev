@@ -10,7 +10,7 @@ $config = array (
         'joebloggs:password' => array(
             'uid' => array('joebloggs'),
             'eduPersonAffiliation' => array('member', 'employee'),
-            'email' => array('joe@corp.com'),
+            'emailAddress' => array('joe@corp.com'),
         ),
     ),
 );

@@ -45,7 +45,7 @@ $metadata['http://localhost:3000/auth/saml/fl-simplesamlphp-dev/metadata'] = arr
   'SingleLogoutService' => 
   array (
   ),
-  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+  'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:emailAddress',
   'validate.authnrequest' => false,
   'saml20.sign.assertion' => false,
 );
