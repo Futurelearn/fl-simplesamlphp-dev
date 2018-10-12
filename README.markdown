@@ -8,28 +8,28 @@ SAML IdP to use for local testing of SSO features.
 You'll need [Docker for Mac](https://docs.docker.com/docker-for-mac/) if
 you're using a Mac. If you're not, you, like... won't.
 
+You can download the installer from docker, but it wants a password
+(annoyingly), so alternatively:
+
+    $ brew cask install docker
+
 ## Usage
 
-To fetch the base image:
+To run the IdP:
 
-    docker pull centos:centos7
-
-To build the image:
-
-    docker build --tag="futurelearn/simplesamlphp-idp:0.0.1" .
-
-To run the image:
-
-    docker run -p 0.0.0.0:9001:80 -d --rm --name="ssp-local-test" futurelearn/simplesamlphp-idp:0.0.1
+    $ docker-compose up
 
 You can then view the web interface in your browser at
 <http://localhost:9001/simplesaml>. The admin login is `admin /
 password`. Shhhhhhh.
 
-To stop the image
+To stop the image, ctrl-C in the docker-compose terminal.
 
-    docker kill ssp-local-test
+To connect to the image for debugging:
 
-To log on to the image for debugging:
+    $ docker exec -it fl-simplesamlphp-dev_web_1 /bin/bash
 
-    docker exec -it ssp-local-test /bin/bash
+If you make a change to any configuration files, stop the container and
+rebuild it:
+
+    $ docker-compose build
