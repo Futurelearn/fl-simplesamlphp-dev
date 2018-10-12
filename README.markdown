@@ -50,3 +50,21 @@ you to the SimpleSAMLphp login UI, where you can log in as `joebloggs / password
 You'll then be redirected back to the FutureLearn app, which will fail
 to log you in because we haven't finished that code yet. But it's
 progress, right? :-)
+
+## Configuring the IdP
+
+Configuration is all in `var-simplesamlphp`, and is copied to the image
+at build time, so any changes to the configuration require the container
+to be rebuilt as described above.
+
+To set up the IdP we followed the [SimpleSAMLphp installation
+guidelines](https://simplesamlphp.org/docs/stable/simplesamlphp-install#section_8)
+(starting from the `config.php` section), then used the [Identity
+Provider
+QuickStart](https://simplesamlphp.org/docs/stable/simplesamlphp-idp)
+docs to enable the IdP.
+
+We're using the `exampleauth` module to provide the list of user
+accounts for the IdP - new users can be added by editing
+`var-simplesamlphp/config/authsources.php` and finding the
+`example-userpass` section.
