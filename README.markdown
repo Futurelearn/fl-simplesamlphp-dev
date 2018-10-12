@@ -11,6 +11,8 @@ wants a password, so alternatively use homebrew:
 
     $ brew cask install docker
 
+Launch the Docker app to install the required tools, such as `docker-compose`.
+
 ## Starting the IdP
 
 To run the IdP, clone this repo and run:
