@@ -40,4 +40,5 @@ $metadata['http://localhost:3000/auth/saml/fl-simplesamlphp-dev/metadata'] = arr
   'validate.authnrequest' => false,
   'saml20.sign.assertion' => false,
   'simplesaml.nameidattribute' => 'mail',
+  'ForceAuthn' => true,
 );
