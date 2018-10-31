@@ -32,16 +32,7 @@ $metadata['http://localhost:3000/auth/saml/fl-simplesamlphp-dev/metadata'] = arr
   array (
   ),
   'metadata-set' => 'saml20-sp-remote',
-  'AssertionConsumerService' => 
-  array (
-    0 => 
-    array (
-      'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
-      'Location' => 'http://localhost:3000/auth/saml/fl-simplesamlphp-dev',
-      'index' => 0,
-      'isDefault' => true,
-    ),
-  ),
+  'AssertionConsumerService' => 'http://localhost:3000/auth/saml/fl-simplesamlphp-dev',
   'SingleLogoutService' => 
   array (
   ),
