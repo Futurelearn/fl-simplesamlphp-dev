@@ -19,4 +19,6 @@ $metadata['__DYNAMIC:1__'] = array(
      * user. This must match one of the entries in config/authsources.php.
      */
     'auth' => 'example-userpass',
+
+    'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:emailAddress',
 );
