@@ -27,18 +27,8 @@ $metadata['google.com'] = array(
 );
 
 $metadata['http://localhost:3000/auth/saml/fl-simplesamlphp-dev/metadata'] = array (
-  'entityid' => 'http://localhost:3000/auth/saml/fl-simplesamlphp-dev/metadata',
-  'contacts' => 
-  array (
-  ),
-  'metadata-set' => 'saml20-sp-remote',
   'AssertionConsumerService' => 'http://localhost:3000/auth/saml/fl-simplesamlphp-dev',
-  'SingleLogoutService' => 
-  array (
-  ),
   'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:emailAddress',
-  'validate.authnrequest' => false,
-  'saml20.sign.assertion' => false,
   'simplesaml.nameidattribute' => 'mail',
   'ForceAuthn' => true,
 );
