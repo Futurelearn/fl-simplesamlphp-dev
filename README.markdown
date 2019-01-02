@@ -49,9 +49,10 @@ With the IdP running, you can now try to authenticate by visiting
 <http://localhost:3000/auth/saml/fl-simplesamlphp-dev>. This should take
 you to the SimpleSAMLphp login UI, where you can log in as `joebloggs / password`.
 
-You'll then be redirected back to the FutureLearn app, which will fail
-to log you in because we haven't finished that code yet. But it's
-progress, right? :-)
+You'll then be redirected back to the FutureLearn app, where the log in 
+process will continue with several different outcomes depending on the status 
+of the organisation membership from the "FL LM Demo" organisation: check
+the example instructions for creating a new user in FL via SSO below.
 
 ## Configuring the IdP
 
@@ -70,3 +71,38 @@ We're using the `exampleauth` module to provide the list of user
 accounts for the IdP - new users can be added by editing
 `var-simplesamlphp/config/authsources.php` and finding the
 `example-userpass` section.
+
+## Integration with the FutureLearn app - Example instructions for QA of registration of a new FL user via SSO
+
+- **run the simple saml php service**
+- open a console at fl-simplesamlphp-dev
+- run the service with `docker-compose up`
+
+- **set up the demo organisation in FL locally**
+- download a fresh copy of the staging DB with `bundle exec cap staging db:import` (or is there a better `fligo` way now?)
+- create the demo IdP running the script `./script/create_saml_dev_idp.rb`
+
+- **invite the demo learner to courses from the demo organisation**
+- run the rails server
+- visit LM at http://localhost:3000/learning-manager with your admin account
+- choose the organisation `FL LM Demo`
+- click on `invite learners to a course`
+- select a course
+- invite by email `joe@example.com`
+
+- **now test the registration via SSO**
+- open a MySQL console: `bundle exec rails db -p`
+- check that the new pending organisation_membership has been created successfully for joe@example.com:
+-- `select * from organisation_memberships order by created_at desc limit 1;`
+-- the fields: `learner_id`, `accepted_at`, and `acceptance_method` should all be `NULL`
+-- keep the mysql console open to verify the membership later
+- open a Guest browser window
+- visit http://localhost:3000/auth/saml/fl-simplesamlphp-dev
+- log on with the org credentials: joebloggs / password
+- once redirected on FL, choose `Not yet joined? **Register**`
+- register the new user, making sure to be enabling SAML
+- you should be now logged on 
+- you should have a notification with the course invitation from FL LM Demo
+- the organisation_membership should now be updated:
+-- `select * from organisation_memberships order by created_at desc limit 1;`
+-- the fields: `learner_id`, `accepted_at`, and `acceptance_method` should all be filled, and the `acceptance_method` now set to `saml`
